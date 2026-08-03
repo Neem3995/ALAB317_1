@@ -53,6 +53,27 @@ class NCycle<T> {
     this.model = model;
     this.wheels = wheels;
   }
+
+  // the index starts at 0 if we do not give the method a number
+  print(index: number = 0): void {
+    // checking if both make and model are single values
+    if (!Array.isArray(this.make) && !Array.isArray(this.model)) {
+      console.log(`This is a ${this.make} ${this.model} NCycle.`);
+    } else if (
+      // checking if both values are arrays before using an index
+      Array.isArray(this.make) &&
+      Array.isArray(this.model) &&
+      index >= 0 &&
+      index < this.make.length &&
+      index < this.model.length
+    ) {
+      console.log(
+        `This NCycle has a ${this.make[index]} ${this.model[index]} at ${index}.`
+      );
+    } else {
+      console.log("This NCycle was not created properly.");
+    }
+  }
 }
 
 // this parameter has the Vehicle type
