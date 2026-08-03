@@ -40,6 +40,21 @@ class MotorCycle extends Vehicle {
   }
 }
 
+// this is a generic class
+// T is a placeholder for the type we want to use when we create an NCycle
+class NCycle<T> {
+  // make and model can each be one T value or an array of T values
+  make: T | T[];
+  model: T | T[];
+  wheels: number;
+
+  constructor(make: T | T[], model: T | T[], wheels: number) {
+    this.make = make;
+    this.model = model;
+    this.wheels = wheels;
+  }
+}
+
 // this parameter has the Vehicle type
 // this means the function expects a Vehicle or a class that extends Vehicle
 function printStatus(vehicle: Vehicle): void {
