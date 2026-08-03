@@ -120,3 +120,43 @@ const myBuick = new Car("Buick", "Regal");
 myBuick.wheels = myBuick.wheels - 1;
 console.log(myBuick.wheels);
 console.log(myBuick.model);
+
+// these are simple tests for the NCycle class
+// this first test uses numbers for the single make and model values
+const numberNCycle = new NCycle<number>(100, 200, 2);
+numberNCycle.print();
+numberNCycle.printAll();
+
+// this test uses strings for the single make and model values
+const stringNCycle = new NCycle<string>("Honda", "CBR", 2);
+stringNCycle.print();
+
+// both make and model are arrays in this test
+// index 1 exists in both arrays but index 5 does not exist
+const arrayNCycle = new NCycle<string>(
+  ["Honda", "Yamaha"],
+  ["CBR", "R1"],
+  2
+);
+arrayNCycle.print(1);
+arrayNCycle.print(5);
+arrayNCycle.printAll();
+
+// these arrays have different lengths
+// printAll only prints the values that have a match in both arrays
+const differentLengthNCycle = new NCycle<string>(
+  ["Honda", "Yamaha", "Suzuki"],
+  ["CBR"],
+  2
+);
+differentLengthNCycle.printAll();
+
+// both arrays are empty so there are no matching values to print
+const emptyNCycle = new NCycle<string>([], [], 2);
+emptyNCycle.printAll();
+
+// the union lets this test use a string array and a single number
+// the class is still typed without using a loose type
+const wrongNCycle = new NCycle<string | number>(["Honda"], 500, 2);
+wrongNCycle.print();
+wrongNCycle.printAll();
