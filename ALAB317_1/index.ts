@@ -30,7 +30,7 @@ class Vehicle {
 
 class Car extends Vehicle {
   constructor(make: string, model: string) {
-    super(make, model, "four");
+    super(make, model, 4);
   }
 }
 
@@ -40,8 +40,10 @@ class MotorCycle extends Vehicle {
   }
 }
 
-function printStatus(vehicle) {
-  if (vehicle.status === "running") {
+// this parameter has the Vehicle type
+// this means the function expects a Vehicle or a class that extends Vehicle
+function printStatus(vehicle: Vehicle): void {
+  if (vehicle.status === "started") {
     console.log("The vehicle is running.");
   } else {
     console.log("The vehicle is stopped.");
@@ -51,9 +53,9 @@ function printStatus(vehicle) {
 const myHarley = new MotorCycle("Harley-Davidson", "Low Rider S");
 myHarley.start();
 printStatus(myHarley);
-console.log(myHarley.make.toUppercase());
+console.log(myHarley.make.toUpperCase());
 
 const myBuick = new Car("Buick", "Regal");
 myBuick.wheels = myBuick.wheels - 1;
 console.log(myBuick.wheels);
-console.log(myBuick.mdl);
+console.log(myBuick.model);
