@@ -1,29 +1,41 @@
 // @ts-check
 
+// this is the main vehicle class
+// every vehicle will get the same basic information from this class
 class Vehicle {
-  status = "stopped";
+  make: string;
+  model: string;
+  wheels: number;
 
-  constructor(make, model, wheels) {
+  // this is a literal union type
+  // status can only be started or stopped
+  status: "started" | "stopped" = "stopped";
+
+  // these types tell typescript what information the constructor needs
+  constructor(make: string, model: string, wheels: number) {
     this.make = make;
     this.model = model;
     this.wheels = wheels;
   }
-  start() {
+
+  // void means this method does not return anything
+  start(): void {
     this.status = "started";
   }
-  stop() {
+
+  stop(): void {
     this.status = "stopped";
   }
 }
 
 class Car extends Vehicle {
-  constructor(make, model) {
+  constructor(make: string, model: string) {
     super(make, model, "four");
   }
 }
 
 class MotorCycle extends Vehicle {
-  constructor(make, model) {
+  constructor(make: string, model: string) {
     super(make, model, 2);
   }
 }
