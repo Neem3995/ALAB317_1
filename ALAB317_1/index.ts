@@ -74,6 +74,31 @@ class NCycle<T> {
       console.log("This NCycle was not created properly.");
     }
   }
+
+  printAll(): void {
+    // this part works when make and model are both single values
+    if (!Array.isArray(this.make) && !Array.isArray(this.model)) {
+      console.log(`This is a ${this.make} ${this.model} NCycle.`);
+    } else if (Array.isArray(this.make) && Array.isArray(this.model)) {
+      // Math.min gives us the length of the shorter array
+      // this keeps the loop from going past either array
+      const amount = Math.min(this.make.length, this.model.length);
+
+      if (amount === 0) {
+        console.log("This NCycle was not created properly.");
+      } else {
+        // this prints every make and model pair that exists in both arrays
+        for (let index = 0; index < amount; index++) {
+          console.log(
+            `This NCycle has a ${this.make[index]} ${this.model[index]} at ${index}.`
+          );
+        }
+      }
+    } else {
+      // one value is an array and the other value is not an array
+      console.log("This NCycle was not created properly.");
+    }
+  }
 }
 
 // this parameter has the Vehicle type
